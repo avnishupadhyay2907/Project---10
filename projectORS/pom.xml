@@ -94,17 +94,14 @@
         </dependency>
     </dependencies>
 
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-                <configuration>
-                    <mainClass>com.sunilos.projectORS.ProjectORSApplication</mainClass>
-                </configuration>
-            </plugin>
-        </plugins>
-    </build>
+  <plugin>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-maven-plugin</artifactId>
+    <configuration>
+        <mainClass>com.rays.ProjectOrsApplication</mainClass>
+    </configuration>
+</plugin>
+
 
     <repositories>
         <repository>
