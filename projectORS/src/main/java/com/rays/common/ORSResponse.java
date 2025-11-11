@@ -6,80 +6,77 @@ import java.util.Map;
 /**
  * Contains REST response
  * 
- * @authorAvnish Upadhyay
- * 
- *
+ * @author Avnish
  */
 public class ORSResponse {
 
-	public static String DATA = "data";
-	public static String INPUT_ERROR = "inputerror";
-	public static String MESSAGE = "message";
+    public static String DATA = "data";
+    public static String INPUT_ERROR = "inputerror";
+    public static String MESSAGE = "message";
 
-	private boolean success = false;
+    private boolean success = false;
+    private Map<String, Object> result = new HashMap<>();
+    private String jwtToken;
 
-	private Map<String, Object> result = new HashMap<String, Object>();
+    public ORSResponse() {}
 
-	private String jwttoken;
+    public ORSResponse(boolean success) {
+        this.success = success;
+    }
 
-	public ORSResponse(String jwttoken) {
-		this.jwttoken = jwttoken;
-	}
+    public ORSResponse(boolean success, String message) {
+        this.success = success;
+        addMessage(message);
+    }
 
-	public String getToken() {
-		return this.jwttoken;
-	}
-	
-	public ORSResponse() {
-	}
+    public ORSResponse(boolean success, String message, Object value) {
+        this.success = success;
+        addMessage(message);
+        addData(value);
+    }
 
-	public ORSResponse(boolean success) {
-		this.success = success;
-	}
+    public ORSResponse(String jwtToken) {
+        this.jwtToken = jwtToken;
+    }
 
-	public ORSResponse(boolean success, String message) {
-		this.success = success;
-		addMessage(message);
-	}
+    // ✅ Getter/Setter names aligned with field names
+    public String getJwtToken() {
+        return jwtToken;
+    }
 
-	public ORSResponse(boolean success, String message, Object value) {
-		this.success = success;
-		addMessage(message);
-		addData(value);
-		System.out.println("....Kuldeep....");
-	}
+    public void setJwtToken(String jwtToken) {
+        this.jwtToken = jwtToken;
+    }
 
-	
-	public boolean isSuccess() {
-		return success;
-	}
-	
-	public void setSuccess(boolean success) {
-		this.success = success;
-	}
+    public boolean isSuccess() {
+        return success;
+    }
 
-	public Map<String, Object> getResult() {
-		return result;
-	}
+    public void setSuccess(boolean success) {
+        this.success = success;
+    }
 
-	public void setResult(Map<String, Object> result) {
-		this.result = result;
-	}
+    public Map<String, Object> getResult() {
+        return result;
+    }
 
-	public void addResult(String key, Object value) {//preload and image
-		result.put(key, value);
-	}
+    public void setResult(Map<String, Object> result) {
+        this.result = result;
+    }
 
-	public void addData(Object value) {//list
-		result.put(DATA, value);
-	}
+    public void addResult(String key, Object value) {
+        result.put(key, value);
+    }
 
-	public void addInputErrors(Object value) {//input validation
-		result.put(INPUT_ERROR, value);
-	}
+    public void addData(Object value) {
+        result.put(DATA, value);
+    }
 
-	public void addMessage(Object value) {//bussiness validation
-		result.put(MESSAGE, value);
-	}
+    public void addInputErrors(Object value) {
+        result.put(INPUT_ERROR, value);
+    }
 
+    public void addMessage(Object value) {
+        result.put(MESSAGE, value);
+    }
 }
